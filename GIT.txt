@@ -1,0 +1,78 @@
+SCM source control management
+GIT persona spiacevole (inglese)
+CVS concurrent version system
+VCS version control system
+DVCS Distributed Version Control Systems (Git, Mercurial, Bazaar or Darcs)
+
+Every clone full backup
+
+Every check in a full snapshot of the project, no file differences
+
+NEarly everithing is local
+
+Integrity by checksums, everything stored by value check, it's the base of the system
+
+Git add data, every commit is stored and protected, so commit often
+
+three stages
+1. committed - in local db (git directory)
+2. modified - not committed (working directory)
+3. staged - marked for next commit (staging area)
+
+command line
+ - you can use all git commands
+ - let you tame every GUI faster
+ - installed with most GUI
+ 
+##################### 
+https://youtu.be/duqBHik7nRo?t=41m18s
+https://youtu.be/duqBHik7nRo?t=1h19s
+#####################
+
+# git init
+git init --bare
+per fare repos che non devono essere necessariamente guardati, sono puri repos senza working directory
+
+cat config
+git config --local user.email
+everything is an object, stored inside object dir, first two number in dir name
+every branch is in refs/head, every file reference in plain text a commit
+branch not a sequence of commits, a branch point to a commit
+every commit has a parent
+we assemble branch from a DAG of commit
+# git add
+git add filename ok
+git add . LOSERS
+git add -p review each points
+git reset -p UNSTAGE each points
+# conflict
+master crea file1, crea branch1, elimina file1
+branch2 modifica file1
+master merge, in caso di errori git merge --abort
+se vedi troppi conflitti, bisogna parlare di più
+# git reset --hard NUM pulisce tutto
+è il comando migliore per distruggere la working directory, quindi sempre git status!
+git config --local rerere.enabled true
+reuse recorded resolutions
+permette di ripetere i merge già applicati
+# rebase
+riscrivere la storia per far sembrare tutto più bello ^_^
+in un caso, riscrivere un vecchio branch in modo che parta dall'attuale ultimo commit di master
+checkout on branch da avanzare
+rebase indicando su quale branch
+se si fa questa operazione per pulizia, poi si fa il merge e viene applicato un fast forward da git
+semplicemente ripunta il branch e non tiene il grafo separato, se si vuole mostrare si usa
+git merge branch1 --no-ff (ha un commit extra che permette il reset)
+GIT REBASE -I (INTERACTIVE) WARNING
+
+
+
+
+
+
+
+
+
+
+
+
