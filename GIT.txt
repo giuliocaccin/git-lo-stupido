@@ -14,10 +14,6 @@ three stages
 2. modified - not committed (working directory)
 3. staged - marked for next commit (staging area)
 
-command line
- - you can use all git commands
- - let you tame every GUI faster
- - installed with most GUI
  
 ##################### 
 https://youtu.be/duqBHik7nRo?t=41m18s
