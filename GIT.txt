@@ -1,8 +1,3 @@
-SCM source control management
-GIT persona spiacevole (inglese)
-CVS concurrent version system
-VCS version control system
-DVCS Distributed Version Control Systems (Git, Mercurial, Bazaar or Darcs)
 
 Every clone full backup
 
