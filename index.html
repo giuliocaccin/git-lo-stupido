@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>GIT – Lo stupido gestore di contenuti</title>
+
+		<meta name="description" content="Slide introduttiva su git con alcuni comandi base">
+		<meta name="author" content="Giulio Caccin">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/overrides.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+					<h1>GIT</h1>
+					<h3>Lo stupido gestore di contenuti</h3>
+					<p>
+						<small><a href="http://twitter.com/giuliocaccin">@giuliocaccin</a></small>
+					</p>
+					<aside class="notes">
+						<ul>
+							<li>Slang britannico per dire persona stupida
+							<li>SCM Source Control Management
+							<li>VCS Version Control System
+							<li>SCCS Source Code Control System 1972
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Introduzione</h2>
+					<h3>CIAO</h3>
+					<aside class="notes">
+						3 ore di presentazione impossibili
+					</aside>
+				</section>
+
+				<section data-background="./img/giulio.png">
+					<h2>Giulio Caccin</h2>
+					<p>.NET Developer dal 2003</p>
+					<p>AXOT da novembre 2014</p>
+					<p>Appassionato di diritti umani</p>
+					<p>MAI tenuto presentazioni tecniche</p>
+					<p>Uso Git dal 2012</p>
+					<aside class="notes">
+						Io prima di usare git <br />
+						Mai usato in grandi progetti <br />
+						Sempre usato bit bucket
+					</aside>
+				</section>
+				
+				<section>
+					<h2>Questa sessione</h2>
+					<p>Punta a livellare conoscenze di strumenti aziendali</p>
+					<p>Introduce alcuni concetti avanzati</p>
+					<p>E’ soprattutto un modo per conoscerci</p>
+					<br />
+					<img data-src="./img/axot.jpg" alt="Axot s.r.l.">
+					<aside class="notes">
+						Che tutti dovremmo conoscere<br />
+						Ogni feedback è ben accetto
+					</aside>
+				</section>
+				
+				<section data-background="./img/gwindows_logo.png" data-background-size="50%" data-state="img-right" >
+					<h2>Perché Git</h2>
+					<p>E’ uno standard de facto nel settore</p>
+					<p>E’ sicuro (poi vedremo)</p>
+					<p>Viene usato da tutti noi in YOOX</p>
+					<br />
+					<aside class="notes">
+						DVCS Distributed Version Control Systems <br />
+						Anche Mercurial lo è, noi lo usiamo attraverso la versione proposta dal provider a pagamento kiln <br />
+						Kiln on-premises is no more under active development since 2013 <br />
+					</aside>
+				</section>
+
+				<section>
+					<h2>Filosofia</h2>
+					<h3>COLLABORAZIONE 2.0</h3>
+					<aside class="notes">
+						Breve introduzione ai concetti fondamentali che hanno portato a git
+					</aside>
+				</section>
+				
+				<section>
+					<h2>Il costo della collaborazione</h2>
+					<ul>
+						<li>Nasce per le esigenze di Linus Torvald
+						<li>È veloce (in locale e in rete)
+						<li>È distribuito
+						<li>È flessibile
+						<li>È sicuro
+						<li>È gratuito ed open source
+					</ul>
+					<aside class="notes">
+						<ul>
+							<li> Più di 12000 contributors a linux, Più di 15 milioni di line di codice
+							<li> Permette ad una sola persona di fare tutti i merge
+							<li> Permette a tutti di creare una copia locale e di giocarci
+							<li> Permette di "riscrivere la storia"
+							<li> Assicura di default l’integrità criptografica di ogni bit del progetto
+							<li> Acrostico GPL 2 GNU General Public License
+						</ul>
+					</aside>
+				</section>
+
+				
+				<section data-background="./img/dag.png" data-background-size="50%" data-state="img-right" >
+					<h2>Grafo aciclico diretto</h2>
+					<p>Struttura di nodi</p>
+					<p>Percorrendo il grafo non si può mai tornare alla partenza</p>
+					<p>Nessun nodo può essere isolato</p>
+					<aside class="notes">
+						DAG Directed acyclic graph <br />
+						Ogni nodo rappresenta un commit
+					</aside>
+				</section>
+
+				<section>
+					<section>
+						<h2>Un commit (non) è per sempre</h2>
+						<p>Commit spesso, fin da subito</p>
+						<p>Ogni commit rappresenta una idea o un cambiamento</p>
+						<p>Prima del push ci si può sbizzarrire</p>
+						<p>Si può riscrivere la storia dei commit locali</p>
+						<aside class="notes">
+							<ul>
+								<li> Chiarire il contesto della modifica
+								<li> un solo cambiamento logico
+								<li> descrivere il cambiamento, non il codice
+								<li> Tenersi al presente, rispondendo alla domanda "cosa applica questo commit?"
+								<li> DIFFERENZA Working directory, index e local
+								<li> FIXME: Commit o alias?
+							</ul>
+						</aside>
+					</section>
+					<section data-background="./img/git-transport.png" data-background-size="800px">
+					</section>
+				</section>
+
+				<section>
+					<h2>Flussi</h2>
+					<h3>NON IMPORTA COME LO USI, BASTA ESSERE D’ACCORDO</h3>
+					<aside class="notes">
+						Git può essere sfruttato dal team in vari modi <br />
+						Non esiste quello giusto, esistono varie necessità e vari gradi di conoscenza
+					</aside>
+				</section>
+
+				<section>
+					<h2>Centralized Workflow</h2>
+					<img data-src="./img/centralized_workflow.png" alt="centralized workflow schema" class="flows">
+					<aside class="notes">
+						Rappresenta il modo più vecchio di concepire il controllo di versione
+					</aside>
+				</section>
+
+				<section>
+					<h2>Feature Branch Workflow</h2>
+					<img data-src="./img/feature_branch_workflow.png" alt="feature branch workflow schema" class="flows">
+					<aside class="notes">
+						Spesso usato da alcuni team su mercurial <br />
+						Un master e solo features
+					</aside>
+				</section>
+
+				<section>
+					<h2>Gitflow Workflow</h2>
+					<img data-src="./img/gitflow_workflow.png" alt="gitflow workflow schema" class="flows">
+					<aside class="notes">
+						Release taggata per versione <br />
+						Patch <br />
+						Develop <br />
+						Feature
+					</aside>
+				</section>
+
+				<section>
+					<h2>Forking Workflow</h2>
+					<img data-src="./img/forking_workflow.png" alt="forking workflow schema" class="flows">
+					<aside class="notes">
+						Ogni sviluppatore ha un repository locale e uno pubblico <br />
+						Ogni repository pubblico punta allo stesso repository centrale <br />
+						Il flow può essere differenziato in ogni repository
+					</aside>
+				</section>
+
+				<section>
+					<h2>GitHub Flow</h2>
+					<img data-src="./img/GitHub_Flow.png" alt="GitHub flow workflow schema">
+					<aside class="notes">
+						<ul>
+							<li>Raggruppa concetti precedenti
+							<li>Incoraggia i fork
+							<li>Introduce le pull request
+							<li>Prevede il deploy prima del merge sul main
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h2>The Yoox Way</h2>
+					<ul>
+						<li>I nuovi progetti vanno su GitHub
+						<li>Non tenere "dati sensibili" nei file di configurazione
+						<li>Consigliato installare almeno una GUI (SourceTree o GitHub for Win)
+						<li>Chiedere il passaggio di repo esistenti
+						<li>Ogni team sta usando il flusso che preferisce (per ora)
+						<li>Automatismi permettendo il workflow a tendere è il GitHub Flow
+					</ul>
+					<aside class="notes">
+						RICORDARE CHE È TUTTO TEMPORANEO <br />
+						Sicuramente nessuna password nei file di configurazione <br />
+						I repo esistenti devono essere controllati prima di fare la migrazione <br />
+						La migrazione viene eseguita attraverso uno script standard
+					</aside>
+				</section>
+
+				<section>
+					<h2>I U+2665 CLI</h2>
+					<h3>OVVERO: COME HO IMPARATO A NON PREOCCUPARMI E AD AMARE LA LINEA DI COMANDO</h3>
+					<aside class="notes">
+						Chi viene da linux?
+					</aside>
+				</section>
+
+				<section data-background="./img/cli.png" data-background-size="700px" data-state="img-right">
+					<h2>Perché la linea di comando?</h2>
+					<p>Si possono usare tutti i comandi di Git</p>
+					<p>Permette di capire tutte le GUI più velocemente</p>
+					<p>Viene installata con tutte le GUI in tutte le piattaforme</p>
+					<p>BONUS: permette di risolvere agilmente eventuali problemi</p>
+					<aside class="notes">
+						Anche se usate le GUI sarete prima o poi obbligati ad usarla <br />
+						Potete diventare voi "il collega da chiamare per risolvere il problema" ^_^
+					</aside>
+				</section>
+				
+				<section>
+					<h2>Git e Windows</h2>
+					<ul>
+						<li>Il massimo col minimo: Git on Windows <br />
+							<a href="https://git-for-windows.github.io/" target="_blank">https://git-for-windows.github.io/</a>
+						<li>L’interfaccia grafica semplice ed elegante <br />
+							<a href="https://desktop.github.com/" target="_blank">https://desktop.github.com/</a>
+						<li>Emulatore di console (necessita di Git on Windows) <br />
+							<a href="https://conemu.github.io/" target="_blank">https://conemu.github.io/</a>
+						<li>Terminale avanzato POWER (Stand Alone) <br />
+							<a href="https://github.com/cmderdev/cmder/releases/" target="_blank">https://github.com/cmderdev/cmder/releases/</a>
+						<li>Package manager <br />
+							<a href="https://chocolatey.org/" target="_blank">https://chocolatey.org/</a>
+					</ul>
+					<aside class="notes">
+						git-for-windows è il pacchetto base ufficiale, contiene tutto quello che serve <br />
+						Anche PRIM ama chocolatey! http://prim.wp.yoox.net/1592/chocolatey-install-ydeploy/
+					</aside>
+				</section>
+			
+                <section data-background="./img/git-gui.png" data-background-size="700px" data-state="img-right">
+					<h2>git-gui</h2>
+					<p>Pensato per gestire commit, branch e merge</p>
+					<p>Non mostra lo storico</p>
+					<p>Multipiattaforma</p>
+					<aside class="notes">
+						TODO: Trovare immagine più sensata
+					</aside>
+				</section>
+
+				<section data-background="./img/gitk.png" data-background-size="700px" data-state="img-right">
+					<h2>gitk</h2>
+				    <p>Mostra cambiamenti nel repository</p>
+                    <p>Visualizza il grafico dei commit</p>
+                    <p>Visualizza il dettaglio dei file per ogni nodo</p>
+					<p><strong>bonus</strong> <code>gitk --follow nome-file</code></p>
+					<aside class="notes">
+						<ul>
+							<li>TODO: Trovare immagine più sensata
+						</ul>
+
+					</aside>
+				</section>
+
+				<section>
+					<h2>SourceTree</h2>
+					<p>Rimuovere dalla lista degli ignore di SourceTree gli EXE</p>
+					<img data-src="./img/sourcetreeIgnoreFile.jpg" alt="SourceTree ignore file">
+					<aside class="notes">
+						Una nota da yoox
+					</aside>
+				</section>
+                
+				<section>
+					<h2>Comandi base</h2>
+					<p>LA SOLITA PIZZA</p>
+					<aside class="notes">
+						facciamo due conti su quello che sappiamo
+					</aside>
+				</section>
+
+				<section>
+				    <h2>I comandi più usati</h2>
+				    <ul>
+                        <li><code>git add</code>
+                        <li><code>git diff</code>
+                        <li><code>git branch</code>
+                        <li><code>git push</code>
+                        <li><code>git status</code>
+                        <li><code>git commit</code>
+                        <li><code>git checkout</code>
+                        <li><code>git pull</code>
+				        <li><code>git log</code>
+                    </ul>
+				</section>
+
+				<section>
+				    <h2>Altri comandi</h2>
+				    <ul>
+                        <li><code>git clone</code>
+                        <li><code>git [command] --help</code>
+                        <li><code>git show [object]</code>
+				    </ul>
+					<aside class="notes">
+						<ul>
+							<li><code>git help [command]</code>
+							<li><code>git config help.format</code>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Into the Porcelain</h2>
+					<p>Alcuni esempi pratici</p>
+					<aside class="notes">
+						<ul>
+							<li>Git è famoso per la sua difficoltà
+							<li>Questo deriva dal fatto che i primi comandi erano tanti e da scriptare
+							<li>Da questo set di tool (plumbing) sono stati creati i porcelain tra i quali i comandi appena visti
+							<li>Andiamo a vederne alcuni meno conosciuti
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h2><code>git config</code></h2>
+                    <p>Imposta le configurazioni per macchina (system), utente (global) e repository (local)</p>
+                    <p>Su windows usa wincred per le credenziali</p>
+                    <p><strong>bonus</strong> Disabilitare il CRLF automatico</p>
+					<aside class="notes">
+						<ul>
+							<li><code>--system</code> tutte le configurazioni della macchina attuale
+							<li><code>--global</code> tutte le configurazioni dell’utente attuale
+							<li><code>--local</code> (default) tutte le configurazioni del reposvim
+							<li>
+							<li><code>git config --global user.name "Name Surname"</code>
+							<li><code>git config --global user.email "yourcompanyemail@yoox.com"</code>
+							<li>
+							<li><code>git config --global core.autocrlf false</code>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h2>README.md</h2>
+                    <p>Consigliato da GitHub</p>
+                    <p>Presenta il repository</p>
+                    <p>CommonMarkdown</p>
+					<aside class="note">
+						Usatelo per spiegare cos'è il repo che l'utente sta guardando
+					</aside>
+				</section>
+
+				<section>
+					<h2><code>git stash</code></h2>
+					<p>Permette di salvare velocemente il proprio lavoro</p>
+				    <aside class="notes">
+						<ul>
+							<li>Finisce in remoto
+							<li><code>git stash</code>
+							<li><code>git stash pop</code>
+							<li><code>git stash drop</code>
+						</ul>
+				    </aside>
+				</section>
+
+				<section>
+					<h2><code>pull</code> VS <code>fetch & merge</code></h2>
+				    <p>pull esegue in contemporanea fetch e merge</p>
+					<p>eseguiti separatamente permettono di capire cosa è successo in remoto</p>
+					<aside class="notes">
+						<ul>
+							<li>Primo consiglio che mi sono ritrovato a dare: non abusare del pull
+							<li><code>git pull</code>
+							<li><code>git fetch</code>
+							<li><code>git merge</code>
+						</ul>
+					</aside>
+				</section>
+
+			    <section>
+			        <h2><code>git tag</code></h2>
+                    <p>Permette di etichettare qualunque punto del log</p>
+                    <p>Non viene condiviso se non esplicitato</p>
+                    <p>Comodo alias per usare altri comandi</p>
+			        <aside class="notes">
+			            <ul>
+							<li><code>git tag [nome]</code> tag leggero
+							<li><code>git tag –a [nome] -m [commento]</code> tag annotato
+						</ul>
+			        </aside>
+			    </section>
+
+			    <section>
+			        <h2><code>git reset</code></h2>
+                    <p>Riporta la HEAD allo stato specificato</p>
+                    <p>Usato per togliere dall’index modifiche aggiunte</p>
+                    <p>Usato per cancellare commit non condivisi</p>
+			        <aside class="notes">
+						<ol>
+							<li>Avete lavorato in locale con master
+							<li>Vi chiedono una modifica veloce su master
+							<li>Salvate su nuovo branch l'attuale <code>git branch dubious-experiment</code>
+							<li>ASSICURATEVI DI ESSERE SU MASTER E DI NON AVERE LO STATUS SPORCO
+							<li><code>git reset --hard [SHA1 of commit]</code>
+							<li>Ora master è nel posto giusto
+							<li>Fate una pull e continuate
+						</ol>
+			        </aside>
+			    </section>
+
+			    <section>
+			        <h2><code>git clean</code></h2>
+			        <p>Pulisce velocemente la working directory</p>
+			        <aside class="notes">
+			            <code>git clean –f –n -d</code>
+			        </aside>
+			    </section>
+
+			    <section>
+			        <h2><code>git rebase</code></h2>
+                    <p>Più pulito del merge, quando necessario</p>
+                    <p>Riapplica tutti i commit di differenza</p>
+					<p>Posiziona l’HEAD subito dopo il soggetto del merge</p>
+                    <p>Evita di visualizzare un branch e un commit aggiuntivo nel grafo</p>
+			        <aside class="notes">
+			            <ul>
+							<li>crea master
+							<li>crea branch
+							<li><code>git rebase</code> on master
+							<li><code>git checkout master</code>
+							<li><code>git merge branch</code>
+						</ul>
+			        </aside>
+			    </section>
+
+			    <section>
+			        <h2>DETACHED HEAD</h2>
+                    <p>Capita usando le GUI</p>
+                    <p>Indica la working directory staccata da un branch</p>
+                    <p>Se si fanno commit e poi si abbandona, senza tag o branch, viene eliminate in automatico</p>
+                    <aside class="notes">
+						<ul>
+							<li>HEAD è un alias ad un branch, il branch a sua volta è un alias ad un commit
+							<li>git checkout [commit o alias]
+							<li>Per salvare eventuali modifiche <code>git tag [nometag]</code> / <code>git checkout –b [nomebranch]</code>
+							<li>Parlare dell’object HEAD
+						</ul>
+			        </aside>
+			    </section>
+
+				<section>
+				    <blockquote>
+				        <h2>&ldquo;git è sicuro&rdquo;</h2>
+				        <footer>Tutti</footer>
+				    </blockquote>
+				    <p>Il seguente comando funziona:</p>
+                    <pre><code class="hljs">git commit -a -m "HeHeHe" --author "Chuck Norris &lt;chuck@is.god&gt;"</code></pre>
+					<aside class="notes">
+						Git è sicuro nel certificare che tutto il salvato è esattamente quello che si vuole salvare SHA1 <br/>
+                        Per aumentare la sicurezza è possibile firmare con chiave crittografica i propri commit
+					</aside>
+				</section>
+
+				<section>
+					<h2>Domande?</h2>
+				</section>
+
+				<section>
+				    <blockquote>
+				        <h2>&ldquo;Grazie a tutti&rdquo;</h2>
+				        <footer><cite>Giulio Caccin</cite></footer>
+				    </blockquote>
+				</section>
+
+				<section>
+					<h2>Link Utili</h2>
+				    <ul>
+				        <li>La bibbia<br/>
+                            <a href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a>
+				        <li>Imparare dai maestri<br/>
+				            <a href="https://help.github.com/">https://help.github.com/</a>
+				        <li>Git e Yoox<br/>
+                            <a href="http://wiki.wp.yoox.net">http://wiki.wp.yoox.net</a>
+				    </ul>
+				</section>
+
+			<section>
+			    <h2>Dove ho rubato</h2>
+			    <ul>
+			        <li><a href="https://youtu.be/duqBHik7nRo">Video fantastico di Lorna Mitchell</a>
+			        <li><a href="http://who-t.blogspot.co.at/2009/12/on-commit-messages.html">Importante articolo sui commit</a>
+			        <li><a href="https://www.atlassian.com/git/tutorials/comparing-workflows">Guida sui flussi di lavoro di Atlassian</a>
+			        <li><a href="https://guides.github.com/introduction/flow/">Indispensabile GitHub Flow</a>
+			        <li><a href="https://ariejan.net/2014/06/04/gpg-sign-your-git-commits/">Firmate con GPG i vostri commit Git</a>
+                </ul>
+			    <aside class="notes">
+			        Tutorial http://www.slideshare.net/lemonlatte/git-tutorial-ii
+			    </aside>
+			</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
