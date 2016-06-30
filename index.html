@@ -146,25 +146,34 @@
 				</section>
 
 				<section>
-					<section>
-						<h2>Un commit (non) è per sempre</h2>
-						<p>Commit spesso, fin da subito</p>
-						<p>Ogni commit rappresenta una idea o un cambiamento</p>
-						<p>Prima del push ci si può sbizzarrire</p>
-						<p>Si può riscrivere la storia dei commit locali</p>
-						<aside class="notes">
-							<ul>
-								<li> Chiarire il contesto della modifica
-								<li> un solo cambiamento logico
-								<li> descrivere il cambiamento, non il codice
-								<li> Tenersi al presente, rispondendo alla domanda "cosa applica questo commit?"
-								<li> DIFFERENZA Working directory, index e local
-								<li> FIXME: Commit o alias?
-							</ul>
-						</aside>
-					</section>
-					<section data-background="./img/git-transport.png" data-background-size="800px">
-					</section>
+					<h2>Un commit (non) è per sempre</h2>
+					<p>Commit spesso, fin da subito</p>
+					<p>Ogni commit rappresenta una idea o un cambiamento</p>
+					<p>Prima del push ci si può sbizzarrire</p>
+					<p>Si può riscrivere la storia dei commit locali</p>
+					<aside class="notes">
+						<ul>
+							<li> Chiarire il contesto della modifica
+							<li> un solo cambiamento logico
+							<li> descrivere il cambiamento, non il codice
+							<li> Tenersi al presente, rispondendo alla domanda "cosa applica questo commit?"
+							<li> DIFFERENZA Working directory, index e local
+							<li> FIXME: Commit o alias?
+						</ul>
+					</aside>
+				</section>
+				
+				<section>
+					<h2>I "tre" stati</h2>
+					<img data-src="./img/git-transport.png" alt="three states" class="flows">
+					<aside class="notes">
+						<ul>
+							<li> Workspace: local checkout
+							<li> Index: current directory cache, staging area, cache, staged files
+							<li> Local repository: .git subdirectory
+							<li> Upstream repository: hosted on internet or network
+						</ul>
+					</aside>
 				</section>
 
 				<section>
@@ -527,6 +536,8 @@
                             <a href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a>
 				        <li>Imparare dai maestri<br/>
 				            <a href="https://help.github.com/">https://help.github.com/</a>
+						<li>Visual cheatsheet<br/>
+							<a href="http://ndpsoftware.com/git-cheatsheet.html">http://ndpsoftware.com/git-cheatsheet.html</a>
 				        <li>Git e Yoox<br/>
                             <a href="http://wiki.wp.yoox.net">http://wiki.wp.yoox.net</a>
 				    </ul>
