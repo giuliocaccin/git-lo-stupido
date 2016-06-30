@@ -3,6 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<title>GIT – Lo stupido gestore di contenuti</title>
 
@@ -12,13 +13,11 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/overrides.css">
 		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/overrides.css">
 		
-		<!-- Code syntax highlighting -->
+		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
 		<!-- Printing and PDF exports -->
@@ -91,7 +90,7 @@
 					</aside>
 				</section>
 				
-				<section data-background="./img/gwindows_logo.png" data-background-size="50%" data-state="img-right" >
+				<section data-background="./img/gwindows_logo.png">
 					<h2>Perché Git</h2>
 					<p>E’ uno standard de facto nel settore</p>
 					<p>E’ sicuro (poi vedremo)</p>
@@ -135,7 +134,7 @@
 				</section>
 
 				
-				<section data-background="./img/dag.png" data-background-size="50%" data-state="img-right" >
+				<section data-background="./img/dag.png" >
 					<h2>Grafo aciclico diretto</h2>
 					<p>Struttura di nodi</p>
 					<p>Percorrendo il grafo non si può mai tornare alla partenza</p>
@@ -254,12 +253,12 @@
 					</aside>
 				</section>
 
-				<section data-background="./img/cli.png" data-background-size="700px" data-state="img-right">
+				<section data-background="./img/cli.png" >
 					<h2>Perché la linea di comando?</h2>
 					<p>Si possono usare tutti i comandi di Git</p>
 					<p>Permette di capire tutte le GUI più velocemente</p>
 					<p>Viene installata con tutte le GUI in tutte le piattaforme</p>
-					<p>BONUS: permette di risolvere agilmente eventuali problemi</p>
+          <p>Update più frequenti</p>
 					<aside class="notes">
 						Anche se usate le GUI sarete prima o poi obbligati ad usarla <br />
 						Potete diventare voi "il collega da chiamare per risolvere il problema" ^_^
@@ -286,7 +285,7 @@
 					</aside>
 				</section>
 			
-                <section data-background="./img/git-gui.png" data-background-size="700px" data-state="img-right">
+        <section data-background="./img/git-gui.png" >
 					<h2>git-gui</h2>
 					<p>Pensato per gestire commit, branch e merge</p>
 					<p>Non mostra lo storico</p>
@@ -296,7 +295,7 @@
 					</aside>
 				</section>
 
-				<section data-background="./img/gitk.png" data-background-size="700px" data-state="img-right">
+				<section data-background="./img/gitk.png" >
 					<h2>gitk</h2>
 				    <p>Mostra cambiamenti nel repository</p>
                     <p>Visualizza il grafico dei commit</p>
@@ -555,25 +554,17 @@
 		<script src="js/reveal.js"></script>
 
 		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
 
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
-				controls: true,
-				progress: true,
 				history: true,
-				center: true,
-
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
-
-				// Optional reveal.js plugins
+        
+				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
+ 					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
 
