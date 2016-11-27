@@ -42,15 +42,14 @@
 				<section>
 					<h1>GIT</h1>
 					<h3>Lo stupido gestore di contenuti</h3>
-					<p>
-						<small><a href="http://twitter.com/giuliocaccin">@giuliocaccin</a></small>
-					</p>
+					<p>Introduzione &amp; alcuni concetti avanzati</p>
 					<aside class="notes">
 						<ul>
 							<li>Slang britannico per dire persona stupida
 							<li>SCM Source Control Management
 							<li>VCS Version Control System
 							<li>SCCS Source Code Control System 1972
+							<li>DVCS Distributed Version Control Systems
 						</ul>
 					</aside>
 				</section>
@@ -68,45 +67,27 @@
 					</aside>
 				</section>
 				
-				<section>
-					<h2>Questa sessione</h2>
-					<p>Introduzione a Git</p>
-					<p>Introduce alcuni concetti avanzati</p>
-					<aside class="notes">
-						Che tutti dovremmo conoscere<br />
-						Ogni feedback è ben accetto
-					</aside>
-				</section>
-				
 				<section data-background="./img/gwindows_logo.png">
-					<h2>Perché Git</h2>
-					<p>E’ uno standard de facto nel settore</p>
-					<p>E’ sicuro (poi vedremo)</p>
+					<h2>Perché Git?</h2>
+					<p>Software libero (senza restrizioni di utilizzo)</p>
+					<p>E' uno standard de facto nel settore</p>
+					<p>Strutturato per favorire la collaborazione</p>
 					<br />
 					<aside class="notes">
-						DVCS Distributed Version Control Systems <br />
-						Anche Mercurial lo è, noi lo usiamo attraverso la versione proposta dal provider a pagamento kiln <br />
-						Kiln on-premises is no more under active development since 2013 <br />
-					</aside>
-				</section>
-
-				<section>
-					<h2>Filosofia</h2>
-					<h3>COLLABORAZIONE 2.0</h3>
-					<aside class="notes">
-						Breve introduzione ai concetti fondamentali che hanno portato a git
+						Tre caratteristiche interconnesse</br>
+						FOSS: free and open source software
 					</aside>
 				</section>
 				
 				<section>
-					<h2>Il costo della collaborazione</h2>
+					<h2>Un po' di storia</h2>
+					<p>le esigenze di Linus Torvald</p>
 					<ul>
-						<li>Nasce per le esigenze di Linus Torvald
-						<li>È veloce (in locale e in rete)
-						<li>È distribuito
-						<li>È flessibile
-						<li>È sicuro
-						<li>È gratuito ed open source
+						<li>Veloce (in locale e in rete)
+						<li>Distribuito
+						<li>Flessibile
+						<li>Sicuro
+						<li>Avere i codici sorgenti
 					</ul>
 					<aside class="notes">
 						<ul>
@@ -126,6 +107,7 @@
 					<p>Percorrendo il grafo non si può mai tornare alla partenza</p>
 					<p>Nessun nodo può essere isolato</p>
 					<aside class="notes">
+						Le basi per cominciare <br />
 						DAG Directed acyclic graph <br />
 						Ogni nodo rappresenta un commit
 					</aside>
@@ -222,21 +204,14 @@
 					</aside>
 				</section>
 
-				<section>
-					<h2>I U+2665 CLI</h2>
-					<h3>OVVERO: COME HO IMPARATO A NON PREOCCUPARMI E AD AMARE LA LINEA DI COMANDO</h3>
-					<aside class="notes">
-						Chi viene da linux?
-					</aside>
-				</section>
-
 				<section data-background="./img/cli.png" >
 					<h2>Perché la linea di comando?</h2>
 					<p>Si possono usare tutti i comandi di Git</p>
 					<p>Permette di capire tutte le GUI più velocemente</p>
 					<p>Viene installata con tutte le GUI in tutte le piattaforme</p>
-          <p>Update più frequenti</p>
+					<p>Update più frequenti</p>
 					<aside class="notes">
+						Chi viene da linux? <br />
 						Anche se usate le GUI sarete prima o poi obbligati ad usarla <br />
 						Potete diventare voi "il collega da chiamare per risolvere il problema" ^_^
 					</aside>
@@ -245,27 +220,26 @@
 				<section>
 					<h2>Git e Windows</h2>
 					<ul>
-						<li>Il massimo col minimo: Git on Windows <br />
+						<li>Riga di comando semplice (CONSIGLIATO!) <br />
 							<a href="https://git-for-windows.github.io/" target="_blank">https://git-for-windows.github.io/</a>
-						<li>L’interfaccia grafica semplice ed elegante <br />
-							<a href="https://desktop.github.com/" target="_blank">https://desktop.github.com/</a>
-						<li>Emulatore di console (necessita di Git on Windows) <br />
+						<li>Interfaccia grafica potente <br />
+							<a href="https://www.sourcetreeapp.com/" target="_blank">https://www.sourcetreeapp.com/</a>
+						<li>Emulatore di console (da usare con git-for-windows) <br />
 							<a href="https://conemu.github.io/" target="_blank">https://conemu.github.io/</a>
-						<li>Terminale avanzato POWER (Stand Alone) <br />
-							<a href="https://github.com/cmderdev/cmder/releases/" target="_blank">https://github.com/cmderdev/cmder/releases/</a>
-						<li>Package manager <br />
-							<a href="https://chocolatey.org/" target="_blank">https://chocolatey.org/</a>
 					</ul>
+					<p>Ma la linea di comando offre alcune sorprese...</p>
 					<aside class="notes">
-						git-for-windows è il pacchetto base ufficiale, contiene tutto quello che serve
+						git-for-windows è il pacchetto base ufficiale, contiene tutto quello che serve <br/>
+						Consiglio un package manager per semplificare il tutto: <a href="https://chocolatey.org/" target="_blank">chocolatey</a> <br />						
+						TODO: mettere programma per fare i merge
 					</aside>
 				</section>
 			
 				<section data-background="./img/git-gui.png" >
 					<h2>git-gui</h2>
 					<p>Pensato per gestire commit, branch e merge</p>
-					<p>Non mostra lo storico</p>
 					<p>Multipiattaforma</p>
+					<p>Non mostra lo storico</p>
 					<aside class="notes">
 						TODO: Trovare immagine più sensata
 					</aside>
@@ -273,10 +247,11 @@
 
 				<section data-background="./img/gitk.png" >
 					<h2>gitk</h2>
-				    <p>Mostra cambiamenti nel repository</p>
+				    <p>Pensato per gestire lo storico</p>
+					<p>Multipiattaforma</p>
                     <p>Visualizza il grafico dei commit</p>
-                    <p>Visualizza il dettaglio dei file per ogni nodo</p>
-					<p><strong>bonus</strong> <code>gitk --follow nome-file</code></p>
+                    <p>Permette di fare il blame</p>
+					<p>[bonus] <code>gitk --follow nome-file</code></p>
 					<aside class="notes">
 						TODO: Trovare immagine più sensata
 					</aside>
@@ -284,18 +259,10 @@
 
 				<section>
 					<h2>SourceTree</h2>
-					<p>Rimuovere dalla lista degli ignore di SourceTree gli EXE</p>
-					<img data-src="./img/sourcetreeIgnoreFile.jpg" alt="SourceTree ignore file">
+					<p>Utilizzabile anche con mercurial</p>
+					<p>Aiuta in caso di conflitti da risolvere</p>
 					<aside class="notes">
 						TODO: mettere consigli su sourcetree
-					</aside>
-				</section>
-                
-				<section>
-					<h2>Comandi base</h2>
-					<p>LA SOLITA PIZZA</p>
-					<aside class="notes">
-						facciamo due conti su quello che sappiamo
 					</aside>
 				</section>
 
@@ -312,18 +279,24 @@
                         <li><code>git pull</code>
 				        <li><code>git log</code>
                     </ul>
+					<aside class="notes">
+						<ul>
+							<li><code>git log --oneline --graph --all --decorate</code>
+							<li><code>git status --short</code>
+						</ul>
+					</aside>
 				</section>
 
 				<section>
 				    <h2>Altri comandi</h2>
 				    <ul>
                         <li><code>git clone</code>
-                        <li><code>git [command] --help</code>
+                        <li><code>git [command] --help</code> / <code>git help [command]</code>
                         <li><code>git show [object]</code>
+						<li><code>git config</code>
 				    </ul>
 					<aside class="notes">
 						<ul>
-							<li><code>git help [command]</code>
 							<li><code>git config help.format</code>
 						</ul>
 					</aside>
@@ -349,8 +322,8 @@
                     <p><strong>bonus</strong> Disabilitare il CRLF automatico</p>
 					<aside class="notes">
 						<ul>
-							<li><code>--system</code> tutte le configurazioni della macchina attuale
-							<li><code>--global</code> tutte le configurazioni dell’utente attuale
+							<li><code>--system</code> c:\Program Files\Git\mingw64\etc\gitconfig
+							<li><code>--global</code> c:\Users\Nomeutente\.gitconfig
 							<li><code>--local</code> (default) tutte le configurazioni del reposvim
 							<li>
 							<li><code>git config --global user.name "Name Surname"</code>
@@ -487,6 +460,12 @@
 				        <h2>&ldquo;Domande?&rdquo;</h2>
 				        <footer>cit. <cite>Giulio</cite></footer>
 				    </blockquote>
+					<p>
+						<small><a href="http://twitter.com/giuliocaccin">@giuliocaccin</a></small>
+					</p>
+					<aside class="notes">
+						Ogni feedback è ben accetto
+					</aside>
 				</section>
 
 				<section>
