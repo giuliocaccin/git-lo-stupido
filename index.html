@@ -268,20 +268,11 @@
 				</section>
 
 				<section>
-					<h2>SourceTree</h2>
-					<p>Utilizzabile anche con mercurial</p>
-					<p>Aiuta in caso di conflitti da risolvere</p>
-					<aside class="notes">
-						TODO: mettere consigli su sourcetree
-					</aside>
-				</section>
-
-				<section>
 					<h2>README.md</h2>
                     <p>Consigliato da GitHub</p>
                     <p>Presenta il repository</p>
-                    <p>CommonMarkdown</p>
-					<aside class="note">
+                    <p>Usa CommonMarkdown</p>
+					<aside class="notes">
 						Usatelo per spiegare cos'è il repo che l'utente sta guardando
 					</aside>
 				</section>
@@ -425,18 +416,12 @@
 
 			    <section>
 			        <h2><code>git rebase</code></h2>
-                    <p>Più pulito del merge, quando necessario</p>
-                    <p>Riapplica tutti i commit di differenza</p>
-					<p>Posiziona l’HEAD subito dopo il soggetto del merge</p>
-                    <p>Evita di visualizzare un branch e un commit aggiuntivo nel grafo</p>
+					<p>Da usare con molta attenzione</p>
+                    <p>Rende più leggibile la storia</p>
+                    <p>Sconsigliato in commit già condivisi</p>
+                    <p>Aiuta i mantainer perchè i conflitti vengono risolti prima</p>
 			        <aside class="notes">
-			            <ul>
-							<li>crea master
-							<li>crea branch
-							<li><code>git rebase</code> on master
-							<li><code>git checkout master</code>
-							<li><code>git merge branch</code>
-						</ul>
+						Se necessario può sostituire il merge
 			        </aside>
 			    </section>
 
@@ -444,8 +429,9 @@
 			        <h2>DETACHED HEAD</h2>
                     <p>Capita usando le GUI</p>
                     <p>Indica la working directory staccata da un branch</p>
-                    <p>Se si fanno commit e poi si abbandona, senza tag o branch, viene eliminate in automatico</p>
+                    <p>Aiuta a capire che si potrebbe perdere il lavoro</p>
                     <aside class="notes">
+						<p>Se si fanno commit e poi si abbandona, senza tag o branch, viene eliminate in automatico</p>
 						<ul>
 							<li>HEAD è un alias ad un branch, il branch a sua volta è un alias ad un commit
 							<li>git checkout [commit o alias]
@@ -456,12 +442,12 @@
 			    </section>
 
 				<section>
-				    <blockquote>
-				        <h2>&ldquo;git è sicuro&rdquo;</h2>
-				        <footer>cit. <cite>Tutti</cite></footer>
-				    </blockquote>
-				    <p>Il seguente comando funziona:</p>
-                    <pre><code class="hljs">git commit -a -m "HeHeHe" --author "Chuck Norris &lt;chuck@is.god&gt;"</code></pre>
+					<h2>Breve storia sulla sicurezza</h2>
+					<br />
+                    <pre><code>git commit -a -m "HeHeHe" --author "Chuck Norris &lt;chuck@is.god&gt;"</code></pre>
+					<br />
+				    <p>Ogni commit ha un committer (account usato) e un author</p>
+					<p>In contesti dove la sicurezza è necessaria potrebbe essere necessario usare firme GPG </p>
 					<aside class="notes">
 						Git è sicuro nel certificare che tutto il salvato è esattamente quello che si vuole salvare SHA1 <br/>
                         Per aumentare la sicurezza è possibile firmare con chiave crittografica i propri commit
@@ -469,10 +455,7 @@
 				</section>
 
 				<section>
-				    <blockquote>
-				        <h2>&ldquo;Domande?&rdquo;</h2>
-				        <footer>cit. <cite>Giulio</cite></footer>
-				    </blockquote>
+					<h2>&ldquo;Domande?&rdquo;</h2>
 					<p>
 						<small><a href="http://twitter.com/giuliocaccin">@giuliocaccin</a></small>
 					</p>
