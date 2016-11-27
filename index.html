@@ -55,21 +55,12 @@
 					</aside>
 				</section>
 
-				<section>
-					<h2>Introduzione</h2>
-					<h3>CIAO</h3>
-					<aside class="notes">
-						3 ore di presentazione impossibili
-					</aside>
-				</section>
-
 				<section data-background="./img/giulio.png">
 					<h2>Giulio Caccin</h2>
-					<p>.NET Developer dal 2003</p>
-					<p>AXOT da novembre 2014</p>
+					<p>Sviluppatore dal 2003</p>
+					<p>.NET / Java</p>
+					<p>Utilizzo Git dal 2012</p>
 					<p>Appassionato di diritti umani</p>
-					<p>MAI tenuto presentazioni tecniche</p>
-					<p>Uso Git dal 2012</p>
 					<aside class="notes">
 						Io prima di usare git <br />
 						Mai usato in grandi progetti <br />
@@ -79,11 +70,8 @@
 				
 				<section>
 					<h2>Questa sessione</h2>
-					<p>Punta a livellare conoscenze di strumenti aziendali</p>
+					<p>Introduzione a Git</p>
 					<p>Introduce alcuni concetti avanzati</p>
-					<p>E’ soprattutto un modo per conoscerci</p>
-					<br />
-					<img data-src="./img/axot.jpg" alt="Axot s.r.l.">
 					<aside class="notes">
 						Che tutti dovremmo conoscere<br />
 						Ogni feedback è ben accetto
@@ -94,7 +82,6 @@
 					<h2>Perché Git</h2>
 					<p>E’ uno standard de facto nel settore</p>
 					<p>E’ sicuro (poi vedremo)</p>
-					<p>Viene usato da tutti noi in YOOX</p>
 					<br />
 					<aside class="notes">
 						DVCS Distributed Version Control Systems <br />
@@ -132,7 +119,6 @@
 						</ul>
 					</aside>
 				</section>
-
 				
 				<section data-background="./img/dag.png" >
 					<h2>Grafo aciclico diretto</h2>
@@ -237,24 +223,6 @@
 				</section>
 
 				<section>
-					<h2>The Yoox Way</h2>
-					<ul>
-						<li>I nuovi progetti vanno su GitHub
-						<li>Non tenere "dati sensibili" nei file di configurazione
-						<li>Consigliato installare almeno una GUI (SourceTree o GitHub for Win)
-						<li>Chiedere il passaggio di repo esistenti
-						<li>Ogni team sta usando il flusso che preferisce (per ora)
-						<li>Automatismi permettendo il workflow a tendere è il GitHub Flow
-					</ul>
-					<aside class="notes">
-						RICORDARE CHE È TUTTO TEMPORANEO <br />
-						Sicuramente nessuna password nei file di configurazione <br />
-						I repo esistenti devono essere controllati prima di fare la migrazione <br />
-						La migrazione viene eseguita attraverso uno script standard
-					</aside>
-				</section>
-
-				<section>
 					<h2>I U+2665 CLI</h2>
 					<h3>OVVERO: COME HO IMPARATO A NON PREOCCUPARMI E AD AMARE LA LINEA DI COMANDO</h3>
 					<aside class="notes">
@@ -289,12 +257,11 @@
 							<a href="https://chocolatey.org/" target="_blank">https://chocolatey.org/</a>
 					</ul>
 					<aside class="notes">
-						git-for-windows è il pacchetto base ufficiale, contiene tutto quello che serve <br />
-						Anche PRIM ama chocolatey! http://prim.wp.yoox.net/1592/chocolatey-install-ydeploy/
+						git-for-windows è il pacchetto base ufficiale, contiene tutto quello che serve
 					</aside>
 				</section>
 			
-        <section data-background="./img/git-gui.png" >
+				<section data-background="./img/git-gui.png" >
 					<h2>git-gui</h2>
 					<p>Pensato per gestire commit, branch e merge</p>
 					<p>Non mostra lo storico</p>
@@ -311,10 +278,7 @@
                     <p>Visualizza il dettaglio dei file per ogni nodo</p>
 					<p><strong>bonus</strong> <code>gitk --follow nome-file</code></p>
 					<aside class="notes">
-						<ul>
-							<li>TODO: Trovare immagine più sensata
-						</ul>
-
+						TODO: Trovare immagine più sensata
 					</aside>
 				</section>
 
@@ -323,7 +287,7 @@
 					<p>Rimuovere dalla lista degli ignore di SourceTree gli EXE</p>
 					<img data-src="./img/sourcetreeIgnoreFile.jpg" alt="SourceTree ignore file">
 					<aside class="notes">
-						Una nota da yoox
+						TODO: mettere consigli su sourcetree
 					</aside>
 				</section>
                 
@@ -421,7 +385,7 @@
 				</section>
 
 				<section>
-					<h2><code>pull</code> VS <code>fetch & merge</code></h2>
+					<h2>&ldquo;<code>pull</code>&rdquo; VS &ldquo;<code>fetch</code>&amp;<code>merge</code>&rdquo;</h2>
 				    <p>pull esegue in contemporanea fetch e merge</p>
 					<p>eseguiti separatamente permettono di capire cosa è successo in remoto</p>
 					<aside class="notes">
@@ -508,7 +472,7 @@
 				<section>
 				    <blockquote>
 				        <h2>&ldquo;git è sicuro&rdquo;</h2>
-				        <footer>Tutti</footer>
+				        <footer>cit. <cite>Tutti</cite></footer>
 				    </blockquote>
 				    <p>Il seguente comando funziona:</p>
                     <pre><code class="hljs">git commit -a -m "HeHeHe" --author "Chuck Norris &lt;chuck@is.god&gt;"</code></pre>
@@ -519,13 +483,9 @@
 				</section>
 
 				<section>
-					<h2>Domande?</h2>
-				</section>
-
-				<section>
 				    <blockquote>
-				        <h2>&ldquo;Grazie a tutti&rdquo;</h2>
-				        <footer><cite>Giulio Caccin</cite></footer>
+				        <h2>&ldquo;Domande?&rdquo;</h2>
+				        <footer>cit. <cite>Giulio</cite></footer>
 				    </blockquote>
 				</section>
 
@@ -538,8 +498,6 @@
 				            <a href="https://help.github.com/">https://help.github.com/</a>
 						<li>Visual cheatsheet<br/>
 							<a href="http://ndpsoftware.com/git-cheatsheet.html">http://ndpsoftware.com/git-cheatsheet.html</a>
-				        <li>Git e Yoox<br/>
-                            <a href="http://wiki.wp.yoox.net">http://wiki.wp.yoox.net</a>
 				    </ul>
 				</section>
 
@@ -566,10 +524,9 @@
 
 		<script>
 			// More info https://github.com/hakimel/reveal.js#configuration
-
 			Reveal.initialize({
+				slideNumber: true,
 				history: true,
-        
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
  					{ src: 'plugin/markdown/marked.js' },
