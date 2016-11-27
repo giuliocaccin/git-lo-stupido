@@ -132,7 +132,7 @@
 				</section>
 				
 				<section>
-					<h2>I "tre" stati</h2>
+					<h2>I &ldquo;tre&rdquo; stati</h2>
 					<img data-src="./img/git-transport.png" alt="three states" class="flows">
 					<aside class="notes">
 						<ul>
@@ -145,25 +145,31 @@
 				</section>
 
 				<section>
-					<h2>Flussi</h2>
-					<h3>NON IMPORTA COME LO USI, BASTA ESSERE D’ACCORDO</h3>
+					<h2>Centralized Workflow</h2>
+					<p>Il più vecchio metodo, si lavora solo su master</p>
+					<p>Si applicano le nuove modifiche sempre in cima alle vecchie</p>
+					<p>La storia viene mantenuta solo dai commit</p>
+					<pre><code data-noescape>
+		  E---F---G  *E---F---G master
+		 /           /
+		A---B---C---D master
+					</code></pre>
 					<aside class="notes">
 						Git può essere sfruttato dal team in vari modi <br />
-						Non esiste quello giusto, esistono varie necessità e vari gradi di conoscenza
-					</aside>
-				</section>
-
-				<section>
-					<h2>Centralized Workflow</h2>
-					<img data-src="./img/centralized_workflow.png" alt="centralized workflow schema" class="flows">
-					<aside class="notes">
+						Non esiste quello giusto, esistono varie necessità e vari gradi di conoscenza <br />
 						Rappresenta il modo più vecchio di concepire il controllo di versione
 					</aside>
 				</section>
 
 				<section>
 					<h2>Feature Branch Workflow</h2>
-					<img data-src="./img/feature_branch_workflow.png" alt="feature branch workflow schema" class="flows">
+					<p>Ogni feature viene sviluppata su un branch</p>
+					<p>Ogni branch viene innestato sul master mantenendo la storia separata</p>
+					<pre><code data-noescape>
+		  E---F---G branch
+		 /         \
+		A---B---C---# master
+					</code></pre>
 					<aside class="notes">
 						Spesso usato da alcuni team su mercurial <br />
 						Un master e solo features
@@ -172,35 +178,39 @@
 
 				<section>
 					<h2>Gitflow Workflow</h2>
-					<img data-src="./img/gitflow_workflow.png" alt="gitflow workflow schema" class="flows">
+					<p>Master taggato per versioni rilasciate</p>
+					<p>Develop per build non stabili</p>
+					<p>Feature branch</p>
+					<pre><code data-noescape>
+		    #---# branch
+		   /     \
+		--#---#---#---#--- develop
+		 /         \
+		#-----------#--- master
+					</code></pre>
 					<aside class="notes">
-						Release taggata per versione <br />
-						Patch <br />
-						Develop <br />
-						Feature
+						Più burocrazia
 					</aside>
 				</section>
 
 				<section>
 					<h2>Forking Workflow</h2>
-					<img data-src="./img/forking_workflow.png" alt="forking workflow schema" class="flows">
+					<p>Lo sviluppatore ha un repo locale e uno pubblico </p>
+					<p>Ogni repo pubblico punta allo stesso repo centrale </p>
+					<p>Un mantainer ha i diritti di scrittura sul repo principale </p>
 					<aside class="notes">
-						Ogni sviluppatore ha un repository locale e uno pubblico <br />
-						Ogni repository pubblico punta allo stesso repository centrale <br />
-						Il flow può essere differenziato in ogni repository
+						Ottimo per i progetti open source e molto complessi
 					</aside>
 				</section>
 
 				<section>
 					<h2>GitHub Flow</h2>
-					<img data-src="./img/GitHub_Flow.png" alt="GitHub flow workflow schema">
+					<p>Il più leggero: solo master e branch</p>
+					<p>Alla fine dello sviluppo si apre una pull request</p>
+					<p>Vengono implementate le modifiche</p>
+					<p>Viene prima deployato e poi mergiato in master</p>
 					<aside class="notes">
-						<ul>
-							<li>Raggruppa concetti precedenti
-							<li>Incoraggia i fork
-							<li>Introduce le pull request
-							<li>Prevede il deploy prima del merge sul main
-						</ul>
+						
 					</aside>
 				</section>
 
@@ -237,9 +247,9 @@
 			
 				<section data-background="./img/git-gui.png" >
 					<h2>git-gui</h2>
-					<p>Pensato per gestire commit, branch e merge</p>
 					<p>Multipiattaforma</p>
-					<p>Non mostra lo storico</p>
+					<p>Pensato per gestire commit, branch e merge</p>
+					<p>Permette di fare stage selettivo di linea</p>
 					<aside class="notes">
 						TODO: Trovare immagine più sensata
 					</aside>
@@ -247,8 +257,8 @@
 
 				<section data-background="./img/gitk.png" >
 					<h2>gitk</h2>
-				    <p>Pensato per gestire lo storico</p>
 					<p>Multipiattaforma</p>
+				    <p>Pensato per gestire lo storico</p>
                     <p>Visualizza il grafico dei commit</p>
                     <p>Permette di fare il blame</p>
 					<p>[bonus] <code>gitk --follow nome-file</code></p>
@@ -263,6 +273,16 @@
 					<p>Aiuta in caso di conflitti da risolvere</p>
 					<aside class="notes">
 						TODO: mettere consigli su sourcetree
+					</aside>
+				</section>
+
+				<section>
+					<h2>README.md</h2>
+                    <p>Consigliato da GitHub</p>
+                    <p>Presenta il repository</p>
+                    <p>CommonMarkdown</p>
+					<aside class="note">
+						Usatelo per spiegare cos'è il repo che l'utente sta guardando
 					</aside>
 				</section>
 
@@ -317,9 +337,10 @@
 
 				<section>
 					<h2><code>git config</code></h2>
-                    <p>Imposta le configurazioni per macchina (system), utente (global) e repository (local)</p>
-                    <p>Su windows usa wincred per le credenziali</p>
-                    <p><strong>bonus</strong> Disabilitare il CRLF automatico</p>
+                    <p>Gestisce configurazioni per <br /> macchina (system), utente (global) e repository (local)</p>
+                    <p>Con <code>credential.helper=manager</code> usa le credenziali di windows</p>
+                    <p>[bonus] crea i tuoi alias </p>
+					<p><code>git config --global alias.grog "log --all --decorate --graph --oneline"</code></p>
 					<aside class="notes">
 						<ul>
 							<li><code>--system</code> c:\Program Files\Git\mingw64\etc\gitconfig
@@ -335,18 +356,9 @@
 				</section>
 
 				<section>
-					<h2>README.md</h2>
-                    <p>Consigliato da GitHub</p>
-                    <p>Presenta il repository</p>
-                    <p>CommonMarkdown</p>
-					<aside class="note">
-						Usatelo per spiegare cos'è il repo che l'utente sta guardando
-					</aside>
-				</section>
-
-				<section>
 					<h2><code>git stash</code></h2>
 					<p>Permette di salvare velocemente il proprio lavoro</p>
+					<p>Lo puoi ri-applicare su qualunque branch</p>
 				    <aside class="notes">
 						<ul>
 							<li>Finisce in remoto
@@ -361,6 +373,7 @@
 					<h2>&ldquo;<code>pull</code>&rdquo; VS &ldquo;<code>fetch</code>&amp;<code>merge</code>&rdquo;</h2>
 				    <p>pull esegue in contemporanea fetch e merge</p>
 					<p>eseguiti separatamente permettono di capire cosa è successo in remoto</p>
+					<p>indispensabile se si usa rebase o push --force</p>
 					<aside class="notes">
 						<ul>
 							<li>Primo consiglio che mi sono ritrovato a dare: non abusare del pull
@@ -375,7 +388,7 @@
 			        <h2><code>git tag</code></h2>
                     <p>Permette di etichettare qualunque punto del log</p>
                     <p>Non viene condiviso se non esplicitato</p>
-                    <p>Comodo alias per usare altri comandi</p>
+                    <p>Riferimento per usare altri comandi</p>
 			        <aside class="notes">
 			            <ul>
 							<li><code>git tag [nome]</code> tag leggero
@@ -405,8 +418,8 @@
 			    <section>
 			        <h2><code>git clean</code></h2>
 			        <p>Pulisce velocemente la working directory</p>
+			        <p><code>git clean –f –n -d</code></p>
 			        <aside class="notes">
-			            <code>git clean –f –n -d</code>
 			        </aside>
 			    </section>
 
